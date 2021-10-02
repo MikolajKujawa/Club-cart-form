@@ -26,6 +26,7 @@ const BasicForm = () => {
             </div>
             <div>
                 <label htmlFor='phone_number'>Phone number</label>
+                
                 <input type='number' id='phone_number' />
             </div>
             <div>

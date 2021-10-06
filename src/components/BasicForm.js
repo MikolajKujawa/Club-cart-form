@@ -1,3 +1,5 @@
+import './form_styling.css'
+
 const BasicForm = () => {
     return ( 
         <form>

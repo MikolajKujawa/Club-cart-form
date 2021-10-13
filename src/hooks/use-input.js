@@ -7,9 +7,14 @@ const useInput = () => {
         setEnetredValue(e.target.value);
     }
 
+    const reset = () => {
+        setEnetredValue('')
+    }
+
     return {
         value: enteredValue,
-        valueChangeHandler
+        valueChangeHandler,
+        reset
     };
 }
  

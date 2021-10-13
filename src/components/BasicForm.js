@@ -6,26 +6,37 @@ const BasicForm = () => {
     const{
         value: firstNameValue,
         valueChangeHandler:firstNameChangeHandler,
+        reset: resetFirstName
     } = useInput()
     const{
         value: lastNameValue,
-        valueChangeHandler:lastNameChangeHandler,
+        valueChangeHandler: lastNameChangeHandler,
+        reset: resetLastName
     } = useInput()
     const{
         value: birthDateValue,
-        valueChangeHandler:birthDateChangeHandler,
+        valueChangeHandler: birthDateChangeHandler,
+        reset: resetBirthDate
     } = useInput()
     const{
         value: emailValue,
-        valueChangeHandler:emailChangeHandler,
+        valueChangeHandler: emailChangeHandler,
+        reset: resetEmail
     } = useInput()
     const{
         value: phoneNumberValue,
-        valueChangeHandler:phoneNumberChangeHandler,
+        valueChangeHandler: phoneNumberChangeHandler,
+        reset: resetPhoneNumber
     } = useInput()
 
     const submitHandler = (e) => {
         e.preventDefault();
+
+        resetFirstName();
+        resetLastName();
+        resetBirthDate();
+        resetEmail();
+        resetPhoneNumber();
     }
 
     return ( 

@@ -1,36 +1,54 @@
 import useInput from '../hooks/use-input';
 import './form_styling.css'
 
-const BasicForm = () => {
+const isNotEmpty = value => value.trim() !== '';
+const isEmail = value => value.includes('@');
+const isPhone = value => value.length === 9;
 
-    const{
+const BasicForm = () => {
+    const {
         value: firstNameValue,
+        isValid:firstNameIsValid,
         valueChangeHandler:firstNameChangeHandler,
-        reset: resetFirstName
-    } = useInput()
-    const{
+        reset: resetFirstName,
+    } = useInput(isNotEmpty);
+    const {
         value: lastNameValue,
+        isValid: lastNameIsValid,
         valueChangeHandler: lastNameChangeHandler,
-        reset: resetLastName
-    } = useInput()
+        reset: resetLastName,
+    } = useInput(isNotEmpty);
     const{
         value: birthDateValue,
+        isValid: birthDateIsValid,
         valueChangeHandler: birthDateChangeHandler,
         reset: resetBirthDate
-    } = useInput()
+    } = useInput(isNotEmpty)
     const{
         value: emailValue,
+        isValid: emailIsValid,
         valueChangeHandler: emailChangeHandler,
         reset: resetEmail
-    } = useInput()
+    } = useInput(isEmail)
     const{
         value: phoneNumberValue,
+        isValid: phoneNumberIsValid,
         valueChangeHandler: phoneNumberChangeHandler,
         reset: resetPhoneNumber
-    } = useInput()
+    } = useInput(isPhone)
+
+    let formIsValid = false;
+
+    if (firstNameIsValid && lastNameIsValid && birthDateIsValid && emailIsValid && phoneNumberIsValid){
+        formIsValid = true;
+    }
 
     const submitHandler = (e) => {
         e.preventDefault();
+
+        if(!formIsValid){
+            return;
+        }
 
         resetFirstName();
         resetLastName();

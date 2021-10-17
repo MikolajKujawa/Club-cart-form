@@ -1,7 +1,9 @@
 import { useState } from "react";
 
-const useInput = () => {
+const useInput = (validateValue) => {
     const [enteredValue, setEnetredValue] = useState('')
+
+    const valueIsValid = validateValue(enteredValue)
     
     const valueChangeHandler = e => {
         setEnetredValue(e.target.value);
@@ -13,6 +15,7 @@ const useInput = () => {
 
     return {
         value: enteredValue,
+        isValid: valueIsValid,
         valueChangeHandler,
         reset
     };
